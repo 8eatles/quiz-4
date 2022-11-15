@@ -1,13 +1,14 @@
 # Quiz 4 File I/O
 
-
-## Question 1
-
 Class 에는 상속이라는 개념이 있다.
 
 특정 Class를 상속받아 부모 Class의 모든 기능을 사용할 수 있다.
 
 코드에는 `FileManager` 클래스를 `CSVManager` 클래스가 상속받고 있다.
+
+
+
+## Question 1
 
 `CSVManager` 클래스의 `printBeautify` 함수는 CSV 파일의 내용을 보기 쉽게 화면에 출력해주는 함수이다.
 
