@@ -1,5 +1,4 @@
 from CSVManager import CSVManager
-from TextManager import TextManager
 
 csvManager = CSVManager("test.csv", "w", ["이름", "나이", "주소"])
 csvManager.writeLine(["홍길동", "20", "서울시"])
