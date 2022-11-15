@@ -5,5 +5,5 @@ csvManager.writeLine(["홍길동", "20", "서울시"])
 csvManager.writeLine(["김철수", "30", "경기도"])
 csvManager.writeLine(["이순신", "40", "부산시"])
 csvManager.changeMode("r")
-csvManager.printBeautify(20)
+csvManager.printBeautify()
 
