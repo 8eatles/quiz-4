@@ -30,32 +30,17 @@ class CSVManager(FileManager):
 
         self.columnCount = len(self.columnHeaders)
 
-    def changeMode(self, mode):
-        if mode != "r" and mode != "w" and mode != "a":
-            raise Exception(f"지원하는 모드(r,w,a)가 아닙니다. ({mode})")
-
-        if self.mode == mode:
-            return
-
-        self._close()
-        self.mode = mode
-        self._open()
-
-    def writeLine(self, cellTexts):
-        if self.mode == "r":
+    def writeLine(self, cellTexts, mode):
+        if mode == "r":
             raise Exception("읽기 모드에서는 write를 할 수 없습니다.")
 
         if cellTexts is None or len(cellTexts) != self.columnCount:
             raise Exception("셀의 개수가 일치하지 않습니다.")
 
-        super().writeLine(",".join(cellTexts))
+        super().writeLine(",".join(cellTexts), mode)
 
     def readLine(self):
-        if self.mode == "w" or self.mode == "a":
-            raise Exception("쓰기 모드에서는 read를 할 수 없습니다.")
-
         row = super().readLine()
-
         return row.split(",") if row else None
 
     def printBeautify(self, cellWidth=10):

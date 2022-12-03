@@ -38,14 +38,21 @@ class FileManager:
     def _close(self):
         self.file.close()
 
-    def writeLine(self, text):
-        if self.mode == "r":
-            raise Exception("읽기 모드에서는 write를 할 수 없습니다.")
+    def changeMode(self, mode):
+        if mode != "r" and mode != "w" and mode != "a":
+            raise Exception(f"지원하는 모드(r,w,a)가 아닙니다. ({mode})")
 
+        if self.mode == mode:
+            return
+
+        self._close()
+        self.mode = mode
+        self._open()
+
+    def writeLine(self, text, mode="w"):
+        self.changeMode(mode)
         self.file.write(text + "\n")
 
     def readLine(self):
-        if self.mode == "w" or self.mode == "a":
-            raise Exception("쓰기 모드에서는 read를 할 수 없습니다.")
-
+        self.changeMode('r')
         return self.file.readline().rstrip()
